@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+
+import AppSearchBar from './components/layout/AppSearchBar';
+
+const API_KEY = process.env.REACT_APP_OMDb_KEY;
 
 class App extends Component {
+  //Was testing API endpoint by logging it out when app loads
+  // componentDidMount() {
+  //   axios
+  //     .get(
+  //       `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&t=The+Big+Lebowski`
+  //     )
+  //     .then(res => {
+  //       console.log(res);
+  //     });
+  // }
+
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+    return <AppSearchBar />;
   }
 }
 
