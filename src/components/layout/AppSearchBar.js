@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+//Also have axios on App.js. Need to find out how to move results from API request through components. Perhaps Redux.
 import axios from 'axios';
 
 const API_KEY = process.env.REACT_APP_OMDb_KEY;
@@ -11,13 +12,33 @@ class AppSearchBar extends Component {
     rated: ''
   };
 
+  //Cleaning user input to properly query API
+  //EX: changes input like 'THE LION KING' to 'The+Lion+King'
+  cleanInput = input => {
+    let cleanInput;
+    let lowerCaseTitle;
+    let titleArray;
+    let upperCaseArray;
+
+    lowerCaseTitle = input.toLowerCase();
+    titleArray = lowerCaseTitle.split(' ');
+    upperCaseArray = titleArray.map(
+      e => e.charAt(0).toUpperCase() + e.substring(1)
+    );
+    cleanInput = upperCaseArray.join('+');
+
+    return cleanInput;
+  };
+
   handleSubmit = e => {
     e.preventDefault();
 
     let { title, genre, actor, rated } = this.state;
 
+    title = this.cleanInput(title);
+
     axios
-      .get(`http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&t=${title}`)
+      .get(`http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${title}`)
       .then(res => {
         console.log(res);
       });
@@ -26,6 +47,8 @@ class AppSearchBar extends Component {
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
+    //Tried using value attribute as placeholder, but can't type in input boxes.
+    //Try <label htmlFor='string' /> instead
     return (
       <nav className="navbar">
         <div className="container">
