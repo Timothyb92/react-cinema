@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 
 import AppSearchBar from './components/layout/AppSearchBar';
+import Header from './components/layout/Header';
 
 const API_KEY = process.env.REACT_APP_OMDb_KEY;
 
@@ -19,7 +20,12 @@ class App extends Component {
   // }
 
   render() {
-    return <AppSearchBar />;
+    return (
+      <>
+        <Header />
+        <AppSearchBar />
+      </>
+    );
   }
 }
 
