@@ -40,7 +40,10 @@ class AppSearchBar extends Component {
     axios
       .get(`http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${title}`)
       .then(res => {
-        console.log(res);
+        let movies = res.data.Search;
+        console.log(movies);
+        let moviePosters = movies.map(e => e.Poster);
+        console.log(moviePosters);
       });
   };
 
@@ -55,24 +58,28 @@ class AppSearchBar extends Component {
           <div className="col-md-12">
             <div className="row">
               <form onSubmit={this.handleSubmit}>
+                <label htmlFor="title">Title</label>
                 <input
                   type="text"
                   // value="Movie Title..."
                   name="title"
                   onChange={this.handleChange}
                 />
+                <label htmlFor="genre">Genre</label>
                 <input
                   type="text"
                   // value="Genre..."
                   name="genre"
                   onChange={this.handleChange}
                 />
+                <label htmlFor="actor">Actor/Actress</label>
                 <input
                   type="text"
                   // value="Actor/Actress..."
                   name="actor"
                   onChange={this.handleChange}
                 />
+                <label htmlFor="rated">Rated</label>
                 <input
                   type="text"
                   // value="Rated..."

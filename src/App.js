@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import AppSearchBar from './components/layout/AppSearchBar';
 import Header from './components/layout/Header';
+import MovieList from './components/movies/MovieList';
 
 const API_KEY = process.env.REACT_APP_OMDb_KEY;
 
@@ -24,6 +25,7 @@ class App extends Component {
       <>
         <Header />
         <AppSearchBar />
+        <MovieList />
       </>
     );
   }
