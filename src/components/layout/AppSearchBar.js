@@ -55,46 +55,59 @@ class AppSearchBar extends Component {
     return (
       <nav className="navbar">
         <div className="container">
-          <div className="col-md-12">
-            <div className="row">
-              <form onSubmit={this.handleSubmit}>
-                <label htmlFor="title">Title</label>
-                <input
-                  type="text"
-                  // value="Movie Title..."
-                  name="title"
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="genre">Genre</label>
-                <input
-                  type="text"
-                  // value="Genre..."
-                  name="genre"
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="actor">Actor/Actress</label>
-                <input
-                  type="text"
-                  // value="Actor/Actress..."
-                  name="actor"
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="rated">Rated</label>
-                <input
-                  type="text"
-                  // value="Rated..."
-                  name="rated"
-                  onChange={this.handleChange}
-                />
-                <div className="row">
+          <div className="row">
+            {/* <div className="col-md-12"> */}
+            <form onSubmit={this.handleSubmit}>
+              <div className="row">
+                <div className="col-md-3">
+                  <label htmlFor="title" className="row">
+                    Title
+                  </label>
                   <input
-                    type="submit"
-                    value="submit"
-                    className="btn btn-primary btn-block w-100"
+                    className="row"
+                    type="text"
+                    // value="Movie Title..."
+                    name="title"
+                    onChange={this.handleChange}
                   />
                 </div>
-              </form>
-            </div>
+                <div className="col-md-3">
+                  <label htmlFor="genre">Genre</label>
+                  <input
+                    type="text"
+                    // value="Genre..."
+                    name="genre"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="col-md-3">
+                  <label htmlFor="actor">Actor/Actress</label>
+                  <input
+                    type="text"
+                    // value="Actor/Actress..."
+                    name="actor"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="col-md-3">
+                  <label htmlFor="rated">Rated</label>
+                  <input
+                    type="text"
+                    // value="Rated..."
+                    name="rated"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <input
+                  type="submit"
+                  value="submit"
+                  className="btn btn-primary btn-block w-100"
+                />
+              </div>
+            </form>
+            {/* </div> */}
           </div>
         </div>
       </nav>
