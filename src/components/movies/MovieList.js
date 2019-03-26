@@ -30,6 +30,7 @@ class MovieList extends Component {
             return (
               <div className="col-md-4">
                 <img src={movie.Poster} alt={movie.Title} />
+                <h4 className="text-center">{movie.Title}</h4>
               </div>
             );
           })}

@@ -53,8 +53,8 @@ class AppSearchBar extends Component {
     //Tried using value attribute as placeholder, but can't type in input boxes.
     //Try <label htmlFor='string' /> instead
     return (
-      <nav className="navbar">
-        <div className="container">
+      <div className="container">
+        <nav className="navbar">
           <div className="row">
             {/* <div className="col-md-12"> */}
             <form onSubmit={this.handleSubmit}>
@@ -109,8 +109,8 @@ class AppSearchBar extends Component {
             </form>
             {/* </div> */}
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     );
   }
 }
