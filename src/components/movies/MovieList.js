@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import {
+  getMoviesOnLoad,
+  getMoviesOnSearch
+} from '../../actions/searchActions';
+// import axios from 'axios';
 
-const API_KEY = process.env.REACT_APP_OMDb_KEY;
+// const API_KEY = process.env.REACT_APP_OMDb_KEY;
 
 class MovieList extends Component {
   state = {
     movies: []
   };
 
-  componentDidMount = () => {
-    axios
-      .get(
-        `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=Street+Fighter`
-      )
-      .then(res => {
-        let movies = res.data.Search;
-        this.setState({ movies });
-      });
-  };
+  componentDidMount() {
+    this.props.getMoviesOnLoad();
+  }
 
   render() {
     let { movies } = this.state;
@@ -40,4 +38,11 @@ class MovieList extends Component {
   }
 }
 
-export default MovieList;
+const mapStateToProps = state => ({
+  movies: state.movies
+});
+
+export default connect(
+  mapStateToProps,
+  { getMoviesOnLoad, getMoviesOnSearch }
+)(MovieList);

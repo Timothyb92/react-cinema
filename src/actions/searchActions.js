@@ -4,12 +4,22 @@ import axios from 'axios';
 
 const API_KEY = process.env.REACT_APP_OMDb_KEY;
 
-export const getMovesOnLoad = () => async dispatch => {
+export const getMoviesOnLoad = () => async dispatch => {
   let res = await axios.get(
-    `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=Street+Fighter`
+    `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=Fast`
   );
   dispatch({
     type: GET_MOVIES_ON_LOAD,
+    payload: res.data
+  });
+};
+
+export const getMoviesOnSearch = title => async dispatch => {
+  let res = await axios.get(
+    `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${title}`
+  );
+  dispatch({
+    type: GET_MOVIES_ON_SEARCH,
     payload: res.data
   });
 };
