@@ -10,7 +10,7 @@ export const getMoviesOnLoad = () => async dispatch => {
   );
   dispatch({
     type: GET_MOVIES_ON_LOAD,
-    payload: res.data
+    payload: res.data.Search
   });
 };
 

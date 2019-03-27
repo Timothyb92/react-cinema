@@ -14,7 +14,7 @@ export default function(state = initialState, action) {
     case GET_MOVIES_ON_SEARCH:
       return {
         ...state,
-        moves: action.payload
+        movies: action.payload
       };
     default:
       return state;
