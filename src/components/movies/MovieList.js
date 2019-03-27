@@ -4,9 +4,6 @@ import {
   getMoviesOnLoad,
   getMoviesOnSearch
 } from '../../actions/searchActions';
-// import axios from 'axios';
-
-// const API_KEY = process.env.REACT_APP_OMDb_KEY;
 
 class MovieList extends Component {
   // state = {
@@ -15,34 +12,38 @@ class MovieList extends Component {
 
   componentDidMount() {
     this.props.getMoviesOnLoad();
-    console.log(this.props);
   }
 
   render() {
+    console.log(this.props);
     let { movies } = this.props;
-    console.log(movies);
 
     return (
-      <div>Testing</div>
-      // <div className="container">
-      //   <div className="row">
-      //     {movies.map((movie, index) => {
-      //       return (
-      //         <div className="col-md-4">
-      //           <img src={movie.Poster} alt={movie.Title} />
-      //           <h4 className="text-center">{movie.Title}</h4>
-      //         </div>
-      //       );
-      //     })}
-      //   </div>
-      // </div>
+      <div className="container">
+        <div className="row">
+          {movies.map((movie, index) => {
+            return (
+              <div className="col-md-4">
+                <img src={movie.Poster} alt={movie.Title} />
+                <h4 className="text-center">{movie.Title}</h4>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  movies: state.movies
-});
+// const mapStateToProps = state => ({
+//   movies: state.movies
+// });
+
+const mapStateToProps = state => {
+  return {
+    movies: state.search.movies
+  };
+};
 
 export default connect(
   mapStateToProps,

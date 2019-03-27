@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import axios from 'axios';
 
 import AppSearchBar from './components/layout/AppSearchBar';
 import Header from './components/layout/Header';

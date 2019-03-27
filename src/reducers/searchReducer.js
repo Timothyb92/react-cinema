@@ -1,7 +1,7 @@
 import { GET_MOVIES_ON_LOAD, GET_MOVIES_ON_SEARCH } from '../actions/types';
 
 const initialState = {
-  movies: []
+  movies: ['Dummy data 1', 'Dummy data 2']
 };
 
 export default function(state = initialState, action) {
