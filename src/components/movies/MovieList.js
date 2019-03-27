@@ -21,9 +21,9 @@ class MovieList extends Component {
     return (
       <div className="container">
         <div className="row">
-          {movies.map((movie, index) => {
+          {movies.map(movie => {
             return (
-              <div className="col-md-4">
+              <div className="col-md-4" key={movie.imdbID}>
                 <img src={movie.Poster} alt={movie.Title} />
                 <h4 className="text-center">{movie.Title}</h4>
               </div>
@@ -34,10 +34,6 @@ class MovieList extends Component {
     );
   }
 }
-
-// const mapStateToProps = state => ({
-//   movies: state.movies
-// });
 
 const mapStateToProps = state => {
   return {

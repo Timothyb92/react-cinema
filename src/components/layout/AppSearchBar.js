@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-//Also have axios on App.js. Need to find out how to move results from API request through components. Perhaps Redux.
-import axios from 'axios';
-
-const API_KEY = process.env.REACT_APP_OMDb_KEY;
+import { connect } from 'react-redux';
+import { getMoviesOnSearch } from '../../actions/searchActions';
 
 class AppSearchBar extends Component {
   state = {
@@ -33,18 +31,9 @@ class AppSearchBar extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    let { title, genre, actor, rated } = this.state;
+    let { title } = this.state;
 
-    title = this.cleanInput(title);
-
-    axios
-      .get(`http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${title}`)
-      .then(res => {
-        let movies = res.data.Search;
-        console.log(movies);
-        let moviePosters = movies.map(e => e.Poster);
-        console.log(moviePosters);
-      });
+    this.props.getMoviesOnSearch(title);
   };
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -115,4 +104,13 @@ class AppSearchBar extends Component {
   }
 }
 
-export default AppSearchBar;
+const mapStateToProps = state => {
+  return {
+    movies: state.search.movies
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { getMoviesOnSearch }
+)(AppSearchBar);
