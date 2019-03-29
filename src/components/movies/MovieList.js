@@ -13,7 +13,6 @@ class MovieList extends Component {
   }
 
   render() {
-    console.log(this.props);
     let { movies } = this.props;
 
     if (movies === undefined) {
@@ -46,7 +45,6 @@ class MovieList extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     movies: state.search.movies
   };

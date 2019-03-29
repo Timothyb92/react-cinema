@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {
+  getMoviesOnLoad,
+  getMoviesOnSearch
+} from '../../actions/searchActions';
 
 class LoadMoreMovies extends Component {
   state = {
@@ -25,8 +29,12 @@ class LoadMoreMovies extends Component {
 
 const mapStateToProps = state => {
   return {
-    movies: state.search.movies
+    movies: state.search.movies,
+    title: state.titleSearched
   };
 };
 
-export default connect(mapStateToProps)(LoadMoreMovies);
+export default connect(
+  mapStateToProps,
+  { getMoviesOnLoad, getMoviesOnSearch }
+)(LoadMoreMovies);
