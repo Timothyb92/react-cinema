@@ -5,11 +5,9 @@ import {
   getMoviesOnSearch
 } from '../../actions/searchActions';
 
-class MovieList extends Component {
-  // state = {
-  //   movies: []
-  // };
+import LoadMoreMovies from './LoadMoreMovies';
 
+class MovieList extends Component {
   componentDidMount() {
     this.props.getMoviesOnLoad();
   }
@@ -39,12 +37,16 @@ class MovieList extends Component {
             );
           })}
         </div>
+        <div className="row">
+          <LoadMoreMovies />
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     movies: state.search.movies
   };
