@@ -18,6 +18,15 @@ class MovieList extends Component {
     console.log(this.props);
     let { movies } = this.props;
 
+    if (movies === undefined) {
+      return (
+        <div>
+          <h2>Oh no! Something went wrong!</h2>
+          <p>Try searching something different.</p>
+        </div>
+      );
+    }
+
     return (
       <div className="container">
         <div className="row">
