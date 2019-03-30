@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  getMoviesOnLoad,
-  getMoviesOnSearch
-} from '../../actions/searchActions';
+import { getMoreMovies } from '../../actions/searchActions';
 
 class LoadMoreMovies extends Component {
   state = {
     page: 1
   };
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log(this.props);
+  }
+
   handleSubmit = () => {
     this.setState({
       page: this.state.page + 1
     });
+    this.props.getMoreMovies(this.props.title, this.state.page);
   };
 
   render() {
@@ -28,13 +30,15 @@ class LoadMoreMovies extends Component {
 }
 
 const mapStateToProps = state => {
+  let { movies, titleSearched } = state.search;
+  console.log(movies, titleSearched);
   return {
-    movies: state.search.movies,
-    title: state.titleSearched
+    movies,
+    titleSearched
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getMoviesOnLoad, getMoviesOnSearch }
+  { getMoreMovies }
 )(LoadMoreMovies);

@@ -1,4 +1,8 @@
-import { GET_MOVIES_ON_LOAD, GET_MOVIES_ON_SEARCH } from './types';
+import {
+  GET_MOVIES_ON_LOAD,
+  GET_MOVIES_ON_SEARCH,
+  GET_MORE_MOVIES
+} from './types';
 
 import axios from 'axios';
 
@@ -20,9 +24,21 @@ export const getMoviesOnSearch = title => async dispatch => {
   let res = await axios.get(
     `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${title}`
   );
-  console.log(`getMoviesOnSearch func running with title argument: ${title}`);
   dispatch({
     type: GET_MOVIES_ON_SEARCH,
+    payload: res.data.Search,
+    titleSearched: title
+  });
+};
+
+export const getMoreMovies = (title, page) => async dispatch => {
+  let res = await axios.get(
+    `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${title}&page=${page}`
+  );
+  console.log(`getMoreMovies running with title ${title} and page ${page}`);
+
+  dispatch({
+    type: GET_MORE_MOVIES,
     payload: res.data.Search
   });
 };

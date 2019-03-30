@@ -1,4 +1,8 @@
-import { GET_MOVIES_ON_LOAD, GET_MOVIES_ON_SEARCH } from '../actions/types';
+import {
+  GET_MOVIES_ON_LOAD,
+  GET_MOVIES_ON_SEARCH,
+  GET_MORE_MOVIES
+} from '../actions/types';
 
 const initialState = {
   movies: []
@@ -16,6 +20,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         movies: action.payload
+      };
+    case GET_MORE_MOVIES:
+      return {
+        ...state,
+        movies: [...state.movies, [...action.payload]]
       };
     default:
       return state;
