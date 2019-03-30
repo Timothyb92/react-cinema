@@ -24,7 +24,7 @@ export default function(state = initialState, action) {
     case GET_MORE_MOVIES:
       return {
         ...state,
-        movies: [...state.movies, [...action.payload]]
+        movies: [...state.movies, ...action.payload]
       };
     default:
       return state;

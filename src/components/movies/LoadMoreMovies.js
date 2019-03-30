@@ -4,7 +4,7 @@ import { getMoreMovies } from '../../actions/searchActions';
 
 class LoadMoreMovies extends Component {
   state = {
-    page: 1
+    page: 2
   };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -15,7 +15,11 @@ class LoadMoreMovies extends Component {
     this.setState({
       page: this.state.page + 1
     });
-    this.props.getMoreMovies(this.props.title, this.state.page);
+
+    let page = this.state.page;
+    let title = this.props.titleSearched;
+
+    this.props.getMoreMovies(title, page);
   };
 
   render() {
