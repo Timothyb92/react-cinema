@@ -19,7 +19,8 @@ export default function(state = initialState, action) {
     case GET_MOVIES_ON_SEARCH:
       return {
         ...state,
-        movies: action.payload
+        movies: action.payload,
+        titleSearched: action.titleSearched
       };
     case GET_MORE_MOVIES:
       return {

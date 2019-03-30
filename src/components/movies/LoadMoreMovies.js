@@ -7,10 +7,6 @@ class LoadMoreMovies extends Component {
     page: 2
   };
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log(this.props);
-  }
-
   handleSubmit = () => {
     this.setState({
       page: this.state.page + 1
@@ -35,7 +31,6 @@ class LoadMoreMovies extends Component {
 
 const mapStateToProps = state => {
   let { movies, titleSearched } = state.search;
-  console.log(movies, titleSearched);
   return {
     movies,
     titleSearched
