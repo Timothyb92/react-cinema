@@ -34,13 +34,13 @@ class MovieList extends Component {
         <div className="row">
           {movies.map(movie => {
             return (
-              <div className="col-md-4" key={movie.imdbID}>
+              <div className="col-md-4" key={movie.id}>
                 <img
-                  src={movie.Poster}
-                  alt={movie.Title}
-                  onError={this.renderPosterOnError.bind(this)}
+                  src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                  alt={movie.title}
+                  onError={this.renderPosterOnError}
                 />
-                <h4 className="text-center">{movie.Title}</h4>
+                <h4 className="text-center">{movie.title}</h4>
               </div>
             );
           })}

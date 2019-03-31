@@ -6,39 +6,42 @@ import {
 
 import axios from 'axios';
 
-const API_KEY = process.env.REACT_APP_OMDb_KEY;
+const API_KEY = process.env.REACT_APP_TMDb_KEY.substring(
+  0,
+  process.env.REACT_APP_TMDb_KEY.length - 1
+);
 
 export const getMoviesOnLoad = () => async dispatch => {
   let initialSearch = 'street fighter';
   let res = await axios.get(
-    `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${initialSearch}`
+    `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&query=${initialSearch}`
   );
+  // console.log(res.data.results);
   dispatch({
     type: GET_MOVIES_ON_LOAD,
-    payload: res.data.Search,
+    payload: res.data.results,
     titleSearched: initialSearch
   });
 };
 
 export const getMoviesOnSearch = title => async dispatch => {
   let res = await axios.get(
-    `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${title}`
+    `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&query=${title}`
   );
   dispatch({
     type: GET_MOVIES_ON_SEARCH,
-    payload: res.data.Search,
+    payload: res.data.results,
     titleSearched: title
   });
 };
 
 export const getMoreMovies = (title, page) => async dispatch => {
   let res = await axios.get(
-    `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${title}&page=${page}`
+    `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&query=${title}&page=${page}`
   );
-  console.log(`getMoreMovies running with title ${title} and page ${page}`);
 
   dispatch({
     type: GET_MORE_MOVIES,
-    payload: res.data.Search
+    payload: res.data.results
   });
 };
