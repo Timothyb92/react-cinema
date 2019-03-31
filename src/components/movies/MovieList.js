@@ -12,6 +12,11 @@ class MovieList extends Component {
     this.props.getMoviesOnLoad();
   }
 
+  renderPosterOnError = img => {
+    img.target.src =
+      'http://www.interlog.com/~tfs/images/posters/TFSMoviePosterUnavailable.jpg';
+  };
+
   render() {
     let { movies } = this.props;
 
@@ -30,7 +35,11 @@ class MovieList extends Component {
           {movies.map(movie => {
             return (
               <div className="col-md-4" key={movie.imdbID}>
-                <img src={movie.Poster} alt={movie.Title} />
+                <img
+                  src={movie.Poster}
+                  alt={movie.Title}
+                  onError={this.renderPosterOnError.bind(this)}
+                />
                 <h4 className="text-center">{movie.Title}</h4>
               </div>
             );
