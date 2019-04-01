@@ -21,7 +21,10 @@ class LoadMoreMovies extends Component {
   render() {
     return (
       <div className="col">
-        <button className="w-100 btn btn-info" onClick={this.handleSubmit}>
+        <button
+          className="h-100 w-100 btn btn-info"
+          onClick={this.handleSubmit}
+        >
           Load More Movies
         </button>
       </div>

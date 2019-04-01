@@ -6,10 +6,7 @@ import {
 
 import axios from 'axios';
 
-const API_KEY = process.env.REACT_APP_TMDb_KEY.substring(
-  0,
-  process.env.REACT_APP_TMDb_KEY.length - 1
-);
+const API_KEY = process.env.REACT_APP_TMDb_KEY;
 
 export const getMoviesOnLoad = () => async dispatch => {
   let initialSearch = 'street fighter';

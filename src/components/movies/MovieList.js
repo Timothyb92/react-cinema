@@ -36,6 +36,7 @@ class MovieList extends Component {
             return (
               <div className="col-md-4" key={movie.id}>
                 <img
+                  className="img-fluid"
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                   alt={movie.title}
                   onError={this.renderPosterOnError}
@@ -44,8 +45,6 @@ class MovieList extends Component {
               </div>
             );
           })}
-        </div>
-        <div className="row">
           <LoadMoreMovies />
         </div>
       </div>
