@@ -15,9 +15,9 @@ class SideBar extends Component {
         <div>
           {genres.map(genre => {
             return (
-              <p key={genre.id} className="text-center">
-                {genre.name}
-              </p>
+              <div key={genre.id}>
+                <p className="text-center">{genre.name}</p>
+              </div>
             );
           })}
         </div>
@@ -29,7 +29,6 @@ class SideBar extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.search.genres);
   return {
     genres: state.search.genres
   };

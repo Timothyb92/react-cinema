@@ -25,7 +25,9 @@ class LoadMoreMovies extends Component {
           className="h-100 w-100 btn btn-info"
           onClick={this.handleSubmit}
         >
-          Load More Movies
+          <p>Load</p>
+          <p>More</p>
+          <p>Movies</p>
         </button>
       </div>
     );
