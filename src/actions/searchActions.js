@@ -51,6 +51,6 @@ export const getGenres = () => async dispatch => {
 
   dispatch({
     type: GET_GENRES,
-    payload: res.data
+    payload: res.data.genres
   });
 };

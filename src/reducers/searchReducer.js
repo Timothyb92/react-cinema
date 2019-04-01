@@ -1,7 +1,8 @@
 import {
   GET_MOVIES_ON_LOAD,
   GET_MOVIES_ON_SEARCH,
-  GET_MORE_MOVIES
+  GET_MORE_MOVIES,
+  GET_GENRES
 } from '../actions/types';
 
 const initialState = {
@@ -26,6 +27,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         movies: [...state.movies, ...action.payload]
+      };
+    case GET_GENRES:
+      return {
+        ...state,
+        genres: action.payload
       };
     default:
       return state;
