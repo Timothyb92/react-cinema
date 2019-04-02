@@ -3,7 +3,8 @@ import {
   GET_MOVIES_ON_SEARCH,
   GET_MORE_MOVIES,
   GET_GENRES,
-  GET_MOVIE
+  GET_MOVIE,
+  GET_CREDITS
 } from './types';
 
 import axios from 'axios';
@@ -60,11 +61,20 @@ export const getMovie = movieID => async dispatch => {
   let res = await axios.get(
     `https://api.themoviedb.org/3/movie/${movieID}?api_key=${API_KEY}&language=en-US`
   );
-  // console.log('getMovie action running');
-  // console.log(res.data);
 
   dispatch({
     type: GET_MOVIE,
+    payload: res.data
+  });
+};
+
+export const getCredits = movieID => async dispatch => {
+  let res = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${API_KEY}&language=en-US`
+  );
+
+  dispatch({
+    type: GET_CREDITS,
     payload: res.data
   });
 };

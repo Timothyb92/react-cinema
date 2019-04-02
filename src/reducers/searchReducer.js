@@ -3,7 +3,8 @@ import {
   GET_MOVIES_ON_SEARCH,
   GET_MORE_MOVIES,
   GET_GENRES,
-  GET_MOVIE
+  GET_MOVIE,
+  GET_CREDITS
 } from '../actions/types';
 
 const initialState = {
@@ -38,6 +39,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         movie: action.payload
+      };
+    case GET_CREDITS:
+      return {
+        ...state,
+        credits: action.payload
       };
     default:
       return state;

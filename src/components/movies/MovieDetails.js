@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getMovie } from '../../actions/movieActions';
+import { getMovie, getCredits } from '../../actions/movieActions';
 
 class MovieDetails extends Component {
   componentDidMount = () => {
     let { id } = this.props.match.params;
     this.props.getMovie(id);
+    this.props.getCredits(id);
   };
 
   renderPosterOnError = img => {
@@ -14,7 +15,7 @@ class MovieDetails extends Component {
   };
 
   render() {
-    let { movie } = this.props;
+    let { movie, credits } = this.props;
     if (movie === undefined) {
       return (
         <div>
@@ -22,7 +23,7 @@ class MovieDetails extends Component {
         </div>
       );
     } else {
-      console.log(movie);
+      console.log(credits);
       return (
         <div className="row">
           <div className="col">
@@ -46,11 +47,12 @@ class MovieDetails extends Component {
 
 const mapStateToProps = state => {
   return {
-    movie: state.search.movie
+    movie: state.search.movie,
+    credits: state.search.credits
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getMovie }
+  { getMovie, getCredits }
 )(MovieDetails);
