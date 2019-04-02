@@ -3,10 +3,21 @@ import { connect } from 'react-redux';
 import { getMovie, getCredits } from '../../actions/movieActions';
 
 class MovieDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loadingMovies: true,
+      loadingCredits: true
+    };
+  }
+
   componentDidMount = () => {
     let { id } = this.props.match.params;
-    this.props.getMovie(id);
-    this.props.getCredits(id);
+    this.props
+      .getCredits(id)
+      .then(() => this.setState({ loadingCredits: false }));
+
+    this.props.getMovie(id).then(() => this.setState({ loadingMovies: false }));
   };
 
   renderPosterOnError = img => {
@@ -16,14 +27,14 @@ class MovieDetails extends Component {
 
   render() {
     let { movie, credits } = this.props;
-    if (movie === undefined) {
+    if (this.state.loadingMovies || this.state.loadingCredits) {
       return (
         <div>
           <h4>Loading..</h4>
         </div>
       );
     } else {
-      console.log(credits);
+      console.log(credits.cast);
       return (
         <div className="row">
           <div className="col">
@@ -37,7 +48,22 @@ class MovieDetails extends Component {
             />
           </div>
           <div className="col">
-            <p>{movie.overview}</p>
+            <div className="row">
+              <p className="col">{movie.overview}</p>
+            </div>
+            <div className="row">
+              <div className="col">
+                {credits.cast.map(castMember => {
+                  return (
+                    <div key={castMember.id}>
+                      <p>{`${castMember.character} as played by ${
+                        castMember.name
+                      }`}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       );
