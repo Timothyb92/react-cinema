@@ -2,7 +2,8 @@ import {
   GET_MOVIES_ON_LOAD,
   GET_MOVIES_ON_SEARCH,
   GET_MORE_MOVIES,
-  GET_GENRES
+  GET_GENRES,
+  GET_MOVIE
 } from './types';
 
 import axios from 'axios';
@@ -52,5 +53,16 @@ export const getGenres = () => async dispatch => {
   dispatch({
     type: GET_GENRES,
     payload: res.data.genres
+  });
+};
+
+export const getMovie = movieID => async dispatch => {
+  let res = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieID}?api_key=${API_KEY}&language=en-US`
+  );
+
+  dispatch({
+    type: GET_MOVIE,
+    payload: res.data
   });
 };
