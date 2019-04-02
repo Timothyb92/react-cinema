@@ -60,6 +60,8 @@ export const getMovie = movieID => async dispatch => {
   let res = await axios.get(
     `https://api.themoviedb.org/3/movie/${movieID}?api_key=${API_KEY}&language=en-US`
   );
+  // console.log('getMovie action running');
+  // console.log(res.data);
 
   dispatch({
     type: GET_MOVIE,

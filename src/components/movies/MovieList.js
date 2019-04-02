@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {
-  getMoviesOnLoad,
-  getMoviesOnSearch
-} from '../../actions/searchActions';
+import { getMoviesOnLoad, getMoviesOnSearch } from '../../actions/movieActions';
 
 import LoadMoreMovies from './LoadMoreMovies';
 
@@ -35,13 +33,15 @@ class MovieList extends Component {
           {movies.map(movie => {
             return (
               <div className="col-md-4" key={movie.id}>
-                <img
-                  className="img-fluid"
-                  src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                  alt={movie.title}
-                  onError={this.renderPosterOnError}
-                />
-                <h4 className="text-center">{movie.title}</h4>
+                <Link to={`movie/${movie.id}`}>
+                  <img
+                    className="img-fluid"
+                    src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                    alt={movie.title}
+                    onError={this.renderPosterOnError}
+                  />
+                  <h4 className="text-center">{movie.title}</h4>
+                </Link>
               </div>
             );
           })}

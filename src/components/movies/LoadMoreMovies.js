@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getMoreMovies } from '../../actions/searchActions';
+import { getMoreMovies } from '../../actions/movieActions';
 
 class LoadMoreMovies extends Component {
   state = {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getGenres } from '../../actions/searchActions';
+import { getGenres } from '../../actions/movieActions';
 
 class SideBar extends Component {
   componentDidMount = () => {

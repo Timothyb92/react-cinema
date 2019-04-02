@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getMoviesOnSearch } from '../../actions/searchActions';
+import { getMoviesOnSearch } from '../../actions/movieActions';
 
 class AppSearchBar extends Component {
   state = {
