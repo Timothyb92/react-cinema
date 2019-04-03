@@ -4,7 +4,8 @@ import {
   GET_MORE_MOVIES,
   GET_GENRES,
   GET_MOVIE,
-  GET_CREDITS
+  GET_CREDITS,
+  GET_PERSON
 } from './types';
 
 import axios from 'axios';
@@ -75,6 +76,17 @@ export const getCredits = movieID => async dispatch => {
 
   dispatch({
     type: GET_CREDITS,
+    payload: res.data
+  });
+};
+
+export const getPerson = personID => async dispatch => {
+  let res = await axios.get(
+    `https://api.themoviedb.org/3/person/${personID}?api_key=${API_KEY}`
+  );
+
+  dispatch({
+    type: GET_PERSON,
     payload: res.data
   });
 };

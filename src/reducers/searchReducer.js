@@ -4,7 +4,8 @@ import {
   GET_MORE_MOVIES,
   GET_GENRES,
   GET_MOVIE,
-  GET_CREDITS
+  GET_CREDITS,
+  GET_PERSON
 } from '../actions/types';
 
 const initialState = {
@@ -44,6 +45,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         credits: action.payload
+      };
+    case GET_PERSON:
+      return {
+        ...state,
+        person: action.payload
       };
     default:
       return state;

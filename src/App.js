@@ -7,6 +7,7 @@ import Header from './components/layout/Header';
 import MovieList from './components/movies/MovieList';
 import SideBar from './components/layout/SideBar';
 import MovieDetails from './components/movies/MovieDetails';
+import CastMember from './components/cast/CastMember';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -26,6 +27,7 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={MovieList} />
                 <Route exact path="/movie/:id" component={MovieDetails} />
+                <Route exact path="/person/:id" component={CastMember} />
               </Switch>
             </Router>
           </div>
