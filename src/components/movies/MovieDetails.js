@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getMovie, getCredits } from '../../actions/movieActions';
 
+import CastList from '../cast/CastList';
+
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +36,6 @@ class MovieDetails extends Component {
         </div>
       );
     } else {
-      console.log(credits.cast);
       return (
         <div className="row">
           <div className="col">
@@ -53,7 +54,8 @@ class MovieDetails extends Component {
             </div>
             <div className="row">
               <div className="col">
-                {credits.cast.map(castMember => {
+                <CastList cast={credits.cast} />
+                {/* {credits.cast.map(castMember => {
                   return (
                     <div key={castMember.id}>
                       <p>{`${castMember.character} as played by ${
@@ -61,7 +63,7 @@ class MovieDetails extends Component {
                       }`}</p>
                     </div>
                   );
-                })}
+                })} */}
               </div>
             </div>
           </div>
