@@ -10,12 +10,13 @@ class CastMember extends Component {
 
   render() {
     if (this.props.person !== undefined) {
-      let { name, id, biography, profile_path } = this.props.person;
+      let { name, biography, profile_path } = this.props.person;
       return (
         <div className="row">
-          <div className="col">
+          <div className="col-md-4">
             <h2>{`${name}`}</h2>
             <img
+              className="img-fluid"
               src={`https://image.tmdb.org/t/p/w780${profile_path}`}
               alt={`${name}`}
             />

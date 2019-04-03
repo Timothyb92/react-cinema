@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getGenres } from '../../actions/movieActions';
+import { getGenres, getMoviesByGenre } from '../../actions/movieActions';
 
 class SideBar extends Component {
   componentDidMount = () => {
     this.props.getGenres();
+  };
+
+  handleGenreClick = genreID => {
+    this.props.getMoviesByGenre(genreID);
   };
 
   render() {
@@ -16,7 +20,10 @@ class SideBar extends Component {
           {genres.map(genre => {
             return (
               <div key={genre.id} className="text-center">
-                <button className="btn btn-primary w-100 m-1">
+                <button
+                  className="btn btn-primary w-100 m-1"
+                  onClick={this.handleGenreClick(genre.id)}
+                >
                   <p className="text-center m-0">{genre.name}</p>
                 </button>
               </div>
@@ -38,5 +45,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getGenres }
+  { getGenres, getMoviesByGenre }
 )(SideBar);

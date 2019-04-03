@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getMoviesOnLoad, getMoviesOnSearch } from '../../actions/movieActions';
+import {
+  getMoviesOnLoad,
+  getMoviesOnSearch,
+  getMoviesByGenre
+} from '../../actions/movieActions';
 
 import LoadMoreMovies from './LoadMoreMovies';
 
@@ -30,6 +34,7 @@ class MovieList extends Component {
     return (
       <div className="container">
         <div className="row">
+          {console.log(movies)}
           {movies.map(movie => {
             return (
               <div className="col-md-4" key={movie.id}>
@@ -60,5 +65,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getMoviesOnLoad, getMoviesOnSearch }
+  { getMoviesOnLoad, getMoviesOnSearch, getMoviesByGenre }
 )(MovieList);
