@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getMoviesOnLoad, getMoviesOnSearch } from '../../actions/movieActions';
+import { getMoviesByGenre } from '../../actions/movieActions';
 
 import LoadMoreMovies from './LoadMoreMovies';
 
-class MovieList extends Component {
+class GenreList extends Component {
   componentDidMount() {
-    this.props.getMoviesOnLoad();
+    this.props.getMoviesByGenre();
   }
 
   renderPosterOnError = img => {
@@ -26,7 +26,6 @@ class MovieList extends Component {
         </div>
       );
     }
-
     return (
       <div className="container">
         <div className="row">
@@ -61,5 +60,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getMoviesOnLoad, getMoviesOnSearch }
-)(MovieList);
+  { getMoviesByGenre }
+)(GenreList);

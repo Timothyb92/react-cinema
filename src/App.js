@@ -8,6 +8,7 @@ import MovieList from './components/movies/MovieList';
 import SideBar from './components/layout/SideBar';
 import MovieDetails from './components/movies/MovieDetails';
 import CastMember from './components/cast/CastMember';
+import GenreList from './components/movies/GenreList';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -16,22 +17,23 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Header />
-        <AppSearchBar />
-        <div className="row">
-          <div className="col-2">
-            <SideBar />
-          </div>
-          <div className="col-10">
-            <Router>
+        <Router>
+          <Header />
+          <AppSearchBar />
+          <div className="row">
+            <div className="col-2">
+              <SideBar />
+            </div>
+            <div className="col-10">
               <Switch>
                 <Route exact path="/" component={MovieList} />
                 <Route exact path="/movie/:id" component={MovieDetails} />
                 <Route exact path="/person/:id" component={CastMember} />
+                <Route expact path="/genre/:id" component={GenreList} />
               </Switch>
-            </Router>
+            </div>
           </div>
-        </div>
+        </Router>
       </Provider>
     );
   }

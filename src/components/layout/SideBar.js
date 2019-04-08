@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getGenres, getMoviesByGenre } from '../../actions/movieActions';
+import { Link } from 'react-router-dom';
 
 class SideBar extends Component {
   componentDidMount = () => {
@@ -8,7 +9,6 @@ class SideBar extends Component {
   };
 
   handleGenreClick = genreID => {
-    // console.log(genreID);
     this.props.getMoviesByGenre(genreID);
   };
 
@@ -21,14 +21,16 @@ class SideBar extends Component {
           {genres.map(genre => {
             return (
               <div key={genre.id} className="text-center">
-                <button
-                  className="btn btn-primary w-100 m-1"
-                  onClick={() => {
-                    this.handleGenreClick(genre.id);
-                  }}
-                >
-                  <p className="text-center m-0">{genre.name}</p>
-                </button>
+                <Link to={`/genre/${genre.id}`}>
+                  <button
+                    className="btn btn-primary w-100 m-1"
+                    onClick={() => {
+                      this.handleGenreClick(genre.id);
+                    }}
+                  >
+                    <p className="text-center m-0">{genre.name}</p>
+                  </button>
+                </Link>
               </div>
             );
           })}
