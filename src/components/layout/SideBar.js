@@ -8,6 +8,7 @@ class SideBar extends Component {
   };
 
   handleGenreClick = genreID => {
+    // console.log(genreID);
     this.props.getMoviesByGenre(genreID);
   };
 
@@ -22,7 +23,9 @@ class SideBar extends Component {
               <div key={genre.id} className="text-center">
                 <button
                   className="btn btn-primary w-100 m-1"
-                  onClick={this.handleGenreClick(genre.id)}
+                  onClick={() => {
+                    this.handleGenreClick(genre.id);
+                  }}
                 >
                   <p className="text-center m-0">{genre.name}</p>
                 </button>
