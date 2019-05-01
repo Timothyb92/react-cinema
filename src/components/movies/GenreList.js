@@ -33,7 +33,7 @@ class GenreList extends Component {
           {movies.map(movie => {
             return (
               <div className="col-md-4" key={movie.id}>
-                <Link to={`movie/${movie.id}`}>
+                <Link to={`/movie/${movie.id}`}>
                   <img
                     className="img-fluid"
                     src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}

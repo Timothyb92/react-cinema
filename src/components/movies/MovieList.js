@@ -8,6 +8,7 @@ import LoadMoreMovies from './LoadMoreMovies';
 class MovieList extends Component {
   componentDidMount() {
     this.props.getMoviesOnLoad();
+    console.log(this.props.history);
   }
 
   renderPosterOnError = img => {
