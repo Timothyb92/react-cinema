@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getMoviesByGenre } from '../../actions/movieActions';
 
-import LoadMoreMovies from './LoadMoreMovies';
+import LoadMoreMoviesByGenre from './LoadMoreMoviesByGenre';
 
 class GenreList extends Component {
   //Commented this out because it was emtying the state after a genre button was clicked.
@@ -19,6 +19,7 @@ class GenreList extends Component {
   };
 
   render() {
+    let { id } = this.props.match.params.id;
     let { movies } = this.props;
 
     if (movies === undefined) {
@@ -47,7 +48,7 @@ class GenreList extends Component {
               </div>
             );
           })}
-          <LoadMoreMovies />
+          <LoadMoreMoviesByGenre genreID={this.props.match.params.id} />
         </div>
       </div>
     );

@@ -6,7 +6,8 @@ import {
   GET_MOVIE,
   GET_CREDITS,
   GET_PERSON,
-  GET_MOVIES_BY_GENRE
+  GET_MOVIES_BY_GENRE,
+  GET_MORE_MOVIES_BY_GENRE
 } from './types';
 
 import axios from 'axios';
@@ -99,6 +100,17 @@ export const getMoviesByGenre = genreID => async dispatch => {
 
   dispatch({
     type: GET_MOVIES_BY_GENRE,
+    payload: res.data.results
+  });
+};
+
+export const getMoreMoviesByGenre = (genreID, page) => async dispatch => {
+  let res = await axios.get(
+    `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreID}&page=${page}`
+  );
+
+  dispatch({
+    type: GET_MORE_MOVIES_BY_GENRE,
     payload: res.data.results
   });
 };
