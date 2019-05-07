@@ -19,18 +19,14 @@ class LoadMoreMoviesByGenre extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
-      <div className="col">
-        <button
-          className="h-100 w-100 btn btn-info"
-          onClick={this.handleSubmit}
-        >
+      <>
+        <button onClick={this.handleSubmit}>
           <p>Load</p>
           <p>More</p>
           <p>Movies</p>
         </button>
-      </div>
+      </>
     );
   }
 }
