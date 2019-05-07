@@ -8,7 +8,6 @@ import LoadMoreMovies from './LoadMoreMovies';
 class MovieList extends Component {
   componentDidMount() {
     this.props.getMoviesOnLoad();
-    console.log(this.props.history);
   }
 
   renderPosterOnError = img => {
@@ -31,7 +30,6 @@ class MovieList extends Component {
     return (
       <div className="container">
         <div className="row">
-          {console.log(movies)}
           {movies.map(movie => {
             return (
               <div className="col-md-4" key={movie.id}>

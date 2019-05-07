@@ -6,9 +6,12 @@ import { getMoviesByGenre } from '../../actions/movieActions';
 import LoadMoreMovies from './LoadMoreMovies';
 
 class GenreList extends Component {
+  //Commented this out because it was emtying the state after a genre button was clicked.
+  /*
   componentDidMount() {
     this.props.getMoviesByGenre();
   }
+  */
 
   renderPosterOnError = img => {
     img.target.src =
@@ -29,7 +32,6 @@ class GenreList extends Component {
     return (
       <div className="container">
         <div className="row">
-          {console.log(movies)}
           {movies.map(movie => {
             return (
               <div className="col-md-4" key={movie.id}>
