@@ -19,7 +19,6 @@ class GenreList extends Component {
   };
 
   render() {
-    let { id } = this.props.match.params.id;
     let { movies } = this.props;
 
     if (movies === undefined) {
