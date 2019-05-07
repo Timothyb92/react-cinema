@@ -28,26 +28,23 @@ class MovieList extends Component {
     }
 
     return (
-      <div className="container">
-        <div className="row">
-          {movies.map(movie => {
-            return (
-              <div className="col-md-4" key={movie.id}>
-                <Link to={`movie/${movie.id}`}>
-                  <img
-                    className="img-fluid"
-                    src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                    alt={movie.title}
-                    onError={this.renderPosterOnError}
-                  />
-                  <h4 className="text-center">{movie.title}</h4>
-                </Link>
-              </div>
-            );
-          })}
-          <LoadMoreMovies />
-        </div>
-      </div>
+      <>
+        {movies.map(movie => {
+          return (
+            <div key={movie.id}>
+              <Link to={`movie/${movie.id}`}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                  alt={movie.title}
+                  onError={this.renderPosterOnError}
+                />
+                <h4>{movie.title}</h4>
+              </Link>
+            </div>
+          );
+        })}
+        <LoadMoreMovies />
+      </>
     );
   }
 }
