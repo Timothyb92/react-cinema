@@ -37,37 +37,18 @@ class MovieDetails extends Component {
       );
     } else {
       return (
-        <div className="row">
-          <div className="col">
-            <h2>{movie.original_title}</h2>
-            <p>{movie.tagline}</p>
-            <img
-              className="img-fluid"
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.original_title}
-              onError={this.renderPosterOnError}
-            />
-          </div>
-          <div className="col">
-            <div className="row">
-              <p className="col">{movie.overview}</p>
-            </div>
-            <div className="row">
-              <div className="col">
-                <CastList cast={credits.cast} />
-                {/* {credits.cast.map(castMember => {
-                  return (
-                    <div key={castMember.id}>
-                      <p>{`${castMember.character} as played by ${
-                        castMember.name
-                      }`}</p>
-                    </div>
-                  );
-                })} */}
-              </div>
-            </div>
-          </div>
-        </div>
+        <>
+          <h2>{movie.original_title}</h2>
+          <p>{movie.tagline}</p>
+          <img
+            className="img-fluid"
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.original_title}
+            onError={this.renderPosterOnError}
+          />
+          <p>{movie.overview}</p>
+          <CastList cast={credits.cast} />
+        </>
       );
     }
   }
