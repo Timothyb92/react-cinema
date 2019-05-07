@@ -17,24 +17,23 @@ class SideBar extends Component {
 
     if (genres) {
       return (
-        <div>
+        <>
           {genres.map(genre => {
             return (
-              <div key={genre.id} className="text-center">
+              <div key={genre.id}>
                 <Link to={`/genre/${genre.id}`}>
                   <button
-                    className="btn btn-primary w-100 m-1"
                     onClick={() => {
                       this.handleGenreClick(genre.id);
                     }}
                   >
-                    <p className="text-center m-0">{genre.name}</p>
+                    <p>{genre.name}</p>
                   </button>
                 </Link>
               </div>
             );
           })}
-        </div>
+        </>
       );
     } else {
       return <p>Loading...</p>;
