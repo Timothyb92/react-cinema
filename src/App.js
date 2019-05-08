@@ -20,19 +20,13 @@ class App extends Component {
         <Router>
           <Header />
           <AppSearchBar />
-          <div className="row">
-            <div className="col-2">
-              <SideBar />
-            </div>
-            <div className="col-10">
-              <Switch>
-                <Route exact path="/" component={MovieList} />
-                <Route exact path="/movie/:id" component={MovieDetails} />
-                <Route exact path="/person/:id" component={CastMember} />
-                <Route expact path="/genre/:id" component={GenreList} />
-              </Switch>
-            </div>
-          </div>
+          <SideBar />
+          <Switch>
+            <Route exact path="/" component={MovieList} />
+            <Route exact path="/movie/:id" component={MovieDetails} />
+            <Route exact path="/person/:id" component={CastMember} />
+            <Route expact path="/genre/:id" component={GenreList} />
+          </Switch>
         </Router>
       </Provider>
     );
