@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import styled from 'styled-components';
 
 import AppSearchBar from './components/layout/AppSearchBar';
 import Header from './components/layout/Header';
@@ -13,20 +14,45 @@ import GenreList from './components/movies/GenreList';
 import { Provider } from 'react-redux';
 import store from './store';
 
+let MainWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  background: #ddd;
+  border: solid 1px red;
+`;
+
+let SideWrapper = styled.div`
+  flex-direction: column;
+  background: #e8e8e8;
+  border: solid 1px green;
+`;
+
+let ContentWrapper = styled.div`
+  flex-direction: row;
+  background: #ccc;
+  border: solid 1px blue;
+`;
+
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <Router>
-          <Header />
-          <AppSearchBar />
-          <SideBar />
-          <Switch>
-            <Route exact path="/" component={MovieList} />
-            <Route exact path="/movie/:id" component={MovieDetails} />
-            <Route exact path="/person/:id" component={CastMember} />
-            <Route expact path="/genre/:id" component={GenreList} />
-          </Switch>
+          <MainWrapper>
+            <Header />
+            <AppSearchBar />
+            <SideWrapper>
+              <SideBar />
+            </SideWrapper>
+            <ContentWrapper>
+              <Switch>
+                <Route exact path="/" component={MovieList} />
+                <Route exact path="/movie/:id" component={MovieDetails} />
+                <Route exact path="/person/:id" component={CastMember} />
+                <Route expact path="/genre/:id" component={GenreList} />
+              </Switch>
+            </ContentWrapper>
+          </MainWrapper>
         </Router>
       </Provider>
     );
