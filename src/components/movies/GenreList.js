@@ -2,8 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getMoviesByGenre } from '../../actions/movieActions';
+import styled from 'styled-components';
 
 import LoadMoreMoviesByGenre from './LoadMoreMoviesByGenre';
+
+let MovieWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  border: solid 1px blue;
+`;
 
 class GenreList extends Component {
   //Commented this out because it was emtying the state after a genre button was clicked.
@@ -30,7 +39,7 @@ class GenreList extends Component {
       );
     }
     return (
-      <>
+      <MovieWrapper>
         {movies.map(movie => {
           return (
             <div key={movie.id}>
@@ -46,7 +55,7 @@ class GenreList extends Component {
           );
         })}
         <LoadMoreMoviesByGenre genreID={this.props.match.params.id} />
-      </>
+      </MovieWrapper>
     );
   }
 }
