@@ -2,8 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getMoviesOnLoad, getMoviesOnSearch } from '../../actions/movieActions';
+import styled from 'styled-components';
 
 import LoadMoreMovies from './LoadMoreMovies';
+
+let MovieWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  border: solid 1px blue;
+`;
 
 class MovieList extends Component {
   componentDidMount() {
@@ -28,7 +37,7 @@ class MovieList extends Component {
     }
 
     return (
-      <>
+      <MovieWrapper>
         {movies.map(movie => {
           return (
             <div key={movie.id}>
@@ -44,7 +53,7 @@ class MovieList extends Component {
           );
         })}
         <LoadMoreMovies />
-      </>
+      </MovieWrapper>
     );
   }
 }
