@@ -18,19 +18,19 @@ let MainWrapper = styled.div`
   display: flex;
   flex-direction: row;
   background: #ddd;
-  border: solid 1px red;
+  // border: solid 1px red;
 `;
 
 let SideWrapper = styled.div`
   flex-direction: column;
   background: #e8e8e8;
-  border: solid 1px green;
+  // border: solid 1px green;
 `;
 
 let ContentWrapper = styled.div`
   flex-direction: row;
   background: #ccc;
-  border: solid 1px blue;
+  // border: solid 1px blue;
 `;
 
 class App extends Component {
