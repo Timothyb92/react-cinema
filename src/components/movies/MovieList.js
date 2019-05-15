@@ -6,12 +6,17 @@ import styled from 'styled-components';
 
 import LoadMoreMovies from './LoadMoreMovies';
 
-let MovieWrapper = styled.div`
+let ListWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
   border: solid 1px blue;
+`;
+
+let MovieWrapper = styled.div`
+  border: 2px solid green;
+  justify-content: center;
 `;
 
 class MovieList extends Component {
@@ -37,10 +42,10 @@ class MovieList extends Component {
     }
 
     return (
-      <MovieWrapper>
+      <ListWrapper>
         {movies.map(movie => {
           return (
-            <div key={movie.id}>
+            <MovieWrapper key={movie.id}>
               <Link to={`movie/${movie.id}`}>
                 <img
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
@@ -49,11 +54,11 @@ class MovieList extends Component {
                 />
                 <h4>{movie.title}</h4>
               </Link>
-            </div>
+            </MovieWrapper>
           );
         })}
         <LoadMoreMovies />
-      </MovieWrapper>
+      </ListWrapper>
     );
   }
 }

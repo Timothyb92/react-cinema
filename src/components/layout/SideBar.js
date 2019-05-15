@@ -32,7 +32,7 @@ let GenreButton = styled.button`
     background-position: left bottom;
   }
 
-  :hover div {
+  :hover span {
     color: white;
   }
 
@@ -41,7 +41,8 @@ let GenreButton = styled.button`
   }
 `;
 
-let Text = styled.div`
+let Text = styled.span`
+  display: inline-block;
   color: #791cce;
   transition: all 0.25s ease-out;
 `;
@@ -63,18 +64,17 @@ class SideBar extends Component {
         <SideBarWrapper>
           {genres.map(genre => {
             return (
-              <div key={genre.id}>
-                <Link to={`/genre/${genre.id}`}>
-                  <GenreButton
-                    onClick={() => {
-                      this.handleGenreClick(genre.id);
-                    }}
-                  >
-                    <FontAwesomeIcon icon="check-square" />
-                    <Text>{genre.name}</Text>
-                  </GenreButton>
-                </Link>
-              </div>
+              <Link to={`/genre/${genre.id}`}>
+                <GenreButton
+                  key={genre.id}
+                  onClick={() => {
+                    this.handleGenreClick(genre.id);
+                  }}
+                >
+                  <FontAwesomeIcon icon="check-square" />
+                  <Text>{genre.name}</Text>
+                </GenreButton>
+              </Link>
             );
           })}
         </SideBarWrapper>
