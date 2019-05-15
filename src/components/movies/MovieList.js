@@ -15,8 +15,26 @@ let ListWrapper = styled.div`
 `;
 
 let MovieWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   border: 2px solid green;
   justify-content: center;
+  align-items: center;
+  margin: 5px 0;
+`;
+
+let PosterWrapper = styled.img`
+  border-radius: 5px;
+  height: 450px;
+  width: 300px;
+`;
+
+let DetailsWrapper = styled.div`
+  color: red;
+  text-align: center;
+  text-decoration: none;
+  font-size: 24px;
+  max-width: 300px;
 `;
 
 class MovieList extends Component {
@@ -47,12 +65,12 @@ class MovieList extends Component {
           return (
             <MovieWrapper key={movie.id}>
               <Link to={`movie/${movie.id}`}>
-                <img
+                <PosterWrapper
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                   alt={movie.title}
                   onError={this.renderPosterOnError}
                 />
-                <h4>{movie.title}</h4>
+                <DetailsWrapper>{movie.title}</DetailsWrapper>
               </Link>
             </MovieWrapper>
           );
