@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getGenres, getMoviesByGenre } from '../../actions/movieActions';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 let SideBarWrapper = styled.div`
   display: flex;
@@ -32,6 +33,10 @@ let GenreButton = styled.button`
   }
 
   :hover div {
+    color: white;
+  }
+
+  :hover svg {
     color: white;
   }
 `;
@@ -65,6 +70,7 @@ class SideBar extends Component {
                       this.handleGenreClick(genre.id);
                     }}
                   >
+                    <FontAwesomeIcon icon="check-square" />
                     <Text>{genre.name}</Text>
                   </GenreButton>
                 </Link>
