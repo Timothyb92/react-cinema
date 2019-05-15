@@ -7,8 +7,38 @@ import styled from 'styled-components';
 let SideBarWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   border: solid 1px red;
+  padding: 5px 10px;
+
+  ${props => console.log(props)}
+`;
+
+let GenreButton = styled.button`
+  color: #791cce;
+  border: 2px solid #791cce;
+  border-radius: 20px;
+  font-size: 22px;
+  padding: 5px 10px;
+  width: 100%;
+  margin: 10px 0;
+  background: linear-gradient(to right, #791cce 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.25s ease-out;
+
+  :hover {
+    background-position: left bottom;
+  }
+
+  :hover div {
+    color: white;
+  }
+`;
+
+let Text = styled.div`
+  color: #791cce;
+  transition: all 0.25s ease-out;
 `;
 
 class SideBar extends Component {
@@ -30,13 +60,13 @@ class SideBar extends Component {
             return (
               <div key={genre.id}>
                 <Link to={`/genre/${genre.id}`}>
-                  <button
+                  <GenreButton
                     onClick={() => {
                       this.handleGenreClick(genre.id);
                     }}
                   >
-                    <p>{genre.name}</p>
-                  </button>
+                    <Text>{genre.name}</Text>
+                  </GenreButton>
                 </Link>
               </div>
             );
