@@ -21,6 +21,18 @@ let MovieWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin: 5px 0;
+  background: linear-gradient(to right, #791cce 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.25s ease-out;
+
+  :hover {
+    background-position: left bottom;
+  }
+
+  :hover span {
+    color: white;
+  }
 `;
 
 let PosterWrapper = styled.img`
@@ -29,12 +41,26 @@ let PosterWrapper = styled.img`
   width: 300px;
 `;
 
-let DetailsWrapper = styled.div`
-  color: red;
+let DetailsWrapper = styled.span`
+  display: block;
+  color: #791cce;
   text-align: center;
   text-decoration: none;
   font-size: 24px;
   max-width: 300px;
+  transition: all 0.25s ease-out;
+`;
+
+let StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
 `;
 
 class MovieList extends Component {
@@ -64,14 +90,14 @@ class MovieList extends Component {
         {movies.map(movie => {
           return (
             <MovieWrapper key={movie.id}>
-              <Link to={`movie/${movie.id}`}>
+              <StyledLink to={`movie/${movie.id}`}>
                 <PosterWrapper
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                   alt={movie.title}
                   onError={this.renderPosterOnError}
                 />
                 <DetailsWrapper>{movie.title}</DetailsWrapper>
-              </Link>
+              </StyledLink>
             </MovieWrapper>
           );
         })}
