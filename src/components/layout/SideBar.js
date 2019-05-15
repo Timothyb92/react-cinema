@@ -11,8 +11,7 @@ let SideBarWrapper = styled.div`
   align-items: stretch;
   border: solid 1px red;
   padding: 5px 10px;
-
-  ${props => console.log(props)}
+  width: 200px;
 `;
 
 let GenreButton = styled.button`
@@ -45,6 +44,7 @@ let Text = styled.span`
   display: inline-block;
   color: #791cce;
   transition: all 0.25s ease-out;
+  margin-left: 5px;
 `;
 
 class SideBar extends Component {
@@ -71,7 +71,7 @@ class SideBar extends Component {
                     this.handleGenreClick(genre.id);
                   }}
                 >
-                  <FontAwesomeIcon icon="check-square" />
+                  <FontAwesomeIcon icon={['far', 'dot-circle']} />
                   <Text>{genre.name}</Text>
                 </GenreButton>
               </Link>
