@@ -30,7 +30,7 @@ let MovieWrapper = styled.div`
     background-position: left bottom;
   }
 
-  :hover span {
+  :hover div {
     color: white;
   }
 `;
@@ -41,7 +41,7 @@ let PosterWrapper = styled.img`
   width: 300px;
 `;
 
-let DetailsWrapper = styled.span`
+let DetailsWrapper = styled.div`
   display: block;
   color: #791cce;
   text-align: center;
